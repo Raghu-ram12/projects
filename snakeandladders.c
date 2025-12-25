@@ -8,6 +8,7 @@
 #define COLOR_GREEN   "\033[32m"
 #define COLOR_RESET  "\033[0m"
 #define COLOR_BLUE   "\e[34m"
+
 typedef struct{
   int x;
   int y;
@@ -50,7 +51,7 @@ void Display_board(char name1[],char name2[],int x1,int y1,int x2,int y2){
         for (int j = 0; j < 10; j++) {
          int flag1=1;
          int flag2=1;
-          if(j==y1&&j==y2&&i==x1&&j==y2){
+          if(i==x1 && j==y1 && i==x2 && j==y2){
             printf("%s",COLOR_BLUE);
             printf("| %3d ", board[i][j]);
             printf("%s",COLOR_RESET);
@@ -92,7 +93,6 @@ void Display_board(char name1[],char name2[],int x1,int y1,int x2,int y2){
 }
 
 int roll_a_die(){
-    srand(time(NULL));
     return (rand()%6)+1;
 }
 
@@ -167,6 +167,7 @@ cordinates move(int p,int n){
 }
 }
 int main(){
+    srand(time(NULL));
     system("cls");
     create_board();
 
@@ -178,8 +179,8 @@ int main(){
 
     printf("enter the name  of the second player\n");
     scanf(" %[^\n]",name2);
-     int x1=0,y1=0;
-     int x2=1,y2=1;
+     int x1=9,y1=0;
+     int x2=9,y2=0;
     Display_board(name1,name2,x1,y1,x2,y2);
     int player=1;
     while(player1<100&&player2<100){
@@ -201,7 +202,7 @@ int main(){
         continue;
     }
   
-    }else if(player=2){
+    }else if(player==2){
          printf("player2 press R to  roll your die \n");
         if(getchar()=='r'){
           printf("rooling\n");
