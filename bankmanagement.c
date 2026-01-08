@@ -81,19 +81,45 @@ int find_account(int num){
     }
    }
 }
+bool authenticate(int n){
+    int count=0;
+    while(count<3){
+        int pin_no;
+        printf("Enter your pin number\n");
+        scanf("%d",&pin_no);
+        if(pin_no==accounts[n].pin){
+            return true;
+        }else{
+            system("cls");
+            printf("incorrect pin\n");
+            system("cls");
+           count++;
+        }
+        return false;
+    }
+
+
+}
 void deposit(){
     int ammount;
     int ac_no;
     printf("Enter the number account number of employee\n");
     scanf("%d",&ac_no);
     int indx=find_account(ac_no);
-    printf("your current balance is %d",accounts[indx].balance);
-    printf("enter ammount to be deposited")
-
+    printf("your current balance is %d\n",accounts[indx].balance);
+    if(authenticate(indx)==true){
+        printf("enter ammount to be deposited\n");
+        scanf("%d",&ammount);
+        accounts[indx].balance=accounts[indx].balance+ammount;
+    }else{
+         printf("failed to  deposit your ammount \n");
+    }
+    
+    printf("your current balance is %d\n",accounts[indx].balance);
 }
 int main(){
   srand((unsigned)time(NULL));
-  
   open_account();
+  deposit();
  
 }
