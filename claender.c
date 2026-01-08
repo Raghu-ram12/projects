@@ -137,11 +137,47 @@ void print_calender(int month, int year){
         }
     }
 }
-int main(){
-    int d,m,y;
-  printf("enter the date in format dd-mm-yyy\n");
-  scanf("%d-%d-%d",&d,&m,&y);
-  get_day(caluclate_odd_days(d,m,y));
+char *get_month_name(int n){
+    switch(n){
+        case 1:
+          return "January";
+        case 2:
+          return "February";
+        case 3:
+           return "March";
+        case 4:
+           return "April";
+        case 5:
+           return "May";
 
-  print_calender(2,2026);
+        case 6:
+           return "June";
+        case 7:
+           return "July";
+        case 8:
+           return "August";
+        case 9:
+           return "September";
+        case 10:
+           return  "October";
+        case 11:
+           return "November";
+        case 12:
+           return "December";
+
+    }
+}
+int main(){
+ int year;
+ printf("enter the year: ");
+ scanf("%d",&year);
+for(int i=1;i<=12;i++){
+    printf("===============================================\n");
+    printf("                    %s                           \n",get_month_name(i));
+    printf("===============================================\n");
+
+    print_calender(i,year);
+    printf("\n");
+}
+  
 }
