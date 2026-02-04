@@ -113,9 +113,11 @@ cordinates move(int p,int n){
 
     int ladders_start[]={4,21,29,43,63,71};
     int ladders_end[]={25,39,74,76,80,89};
+
     int snakes_start[]={98,92,82,73,56,47,30};
     int snakes_end[]={55,75,42,51,19,15,7};
     cordinates points;
+
  if(p==1){
     if(player1+n<=100){
      player1=player1+n;
